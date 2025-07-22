@@ -1,0 +1,11 @@
+fragment DetailSectionCta on DetailSectionCtaRecord {
+  heading
+  details {
+    value
+  }
+  buttonscta {
+    label
+    primary
+    url
+  }
+}

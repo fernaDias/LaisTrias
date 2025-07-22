@@ -1,0 +1,96 @@
+export const MakeHeadingStyles = {
+  baseStyle: {
+    fontFamily: `"Open Sans", sans-serif`,
+  },
+  sizes: {},
+  variants: {
+    titleH1: {
+      fontSize: ["38px", "38px", "38px", "78px"],
+      fontWeight: "700",
+      lineHeight: ["41.8px", "41.8px", "41.8px", "61.6px"],
+      letterSpacing: "-0.03em",
+    },
+    titleH2: {
+      fontSize: ["34px", "34px", "34px", "48px"],
+      fontWeight: "medium",
+      lineHeight: ["37.4px", "37.4px", "37.4px", "52.8px"],
+      letterSpacing: "-0.03em",
+    },
+    titleH3: {
+      fontSize: ["28px", "28px", "28px", "36px"],
+      fontWeight: "medium",
+      lineHeight: ["33.6px", "33.6px", "33.6px", "43.2px"],
+      letterSpacing: "-0.03em",
+    },
+    titleH4: {
+      fontSize: ["24px", "24px", "24px", "34px"],
+      fontWeight: "medium",
+      lineHeight: ["28.8px", "28.8px", "28.8px", "40.8px"],
+      letterSpacing: "-0.02em",
+    },
+    titleH5: {
+      fontSize: ["20px", "20px", "20px", "24px"],
+      fontWeight: "medium",
+      lineHeight: ["24px", "24px", "24px", "28.8px"],
+      letterSpacing: "-0.02em",
+    },
+    highlight: {
+      fontSize: ["3.75rem", "3.75rem", "4rem", "4rem"],
+      fontWeight: "medium",
+      lineHeight: ["66px", "66px", "66px", "66px"],
+      letterSpacing: "-3%",
+    },
+    richTextH1: {
+      fontSize: [
+        "2.375rem",
+        "2.375rem",
+        "2.375rem",
+        "3.5rem",
+        "3.5rem",
+        "3.5rem",
+      ],
+      fontWeight: "medium",
+      lineHeight: "1.1em",
+      letterSpacing: "-0.03em",
+    },
+    richTextH2: {
+      fontSize: ["2.125rem", "2.125rem", "2.125rem", "3rem", "3rem", "3rem"],
+      fontWeight: "medium",
+      lineHeight: "1.1em",
+      letterSpacing: "-0.03em",
+    },
+    richTextH3: {
+      fontSize: [
+        "1.75rem",
+        "1.75rem",
+        "1.75rem",
+        "2.25rem",
+        "2.25rem",
+        "2.25rem",
+      ],
+      fontWeight: "medium",
+      lineHeight: "1.2em",
+      letterSpacing: "-0.03em",
+    },
+    richTextH4: {
+      fontSize: [
+        "1.5rem",
+        "1.5rem",
+        "1.5rem",
+        "2.125rem",
+        "2.125rem",
+        "2.125rem",
+      ],
+      fontWeight: "medium",
+      lineHeight: "1.2em",
+      letterSpacing: "-0.02em",
+    },
+    richTextH5: {
+      fontSize: ["1.25rem", "1.25rem", "1.25rem", "1.5rem", "1.5rem", "1.5rem"],
+      fontWeight: "medium",
+      lineHeight: "1.2em",
+      letterSpacing: "-0.02em",
+    },
+  },
+  defaultProps: {},
+};

@@ -1,0 +1,16 @@
+fragment NewTeamSection on NewTeamSectionRecord {
+  title
+  subtitle
+  showcasedNewTeam {
+    name
+    id
+    slug
+    teamPosition
+    description
+    picture {
+      responsiveImage {
+        ...DatoImage_responsiveImage
+      }
+    }
+  }
+}

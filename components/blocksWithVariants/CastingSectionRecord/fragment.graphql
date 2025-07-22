@@ -1,0 +1,19 @@
+fragment CastingSection on CastingSectionRecord {
+  displayOptions
+  title
+  subtitle
+  showcasedCasting {
+    name
+    id
+    slug
+    bio
+    description {
+      value
+    }
+    picture {
+      responsiveImage {
+        ...DatoImage_responsiveImage
+      }
+    }
+  }
+}

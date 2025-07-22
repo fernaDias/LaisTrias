@@ -1,0 +1,6 @@
+fragment ContactSection on ContactSectionRecord {
+  heading
+  details {
+    value
+  }
+}

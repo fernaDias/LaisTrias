@@ -1,0 +1,32 @@
+query Ocasting($slug: String, $locale: SiteLocale) {
+  ocasting(filter: { slug: { eq: $slug } }, locale: $locale) {
+    seo: _seoMetaTags {
+      attributes
+      content
+      tag
+    }
+    name
+    picture {
+      responsiveImage {
+        ...DatoImage_responsiveImage
+      }
+    }
+    user
+    description
+    socialMediaLinks {
+      url
+      name
+      id
+      icon {
+        url
+        height
+        width
+      }
+    }
+    tags {
+      id
+      tag
+      slug
+    }
+  }
+}

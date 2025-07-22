@@ -1,0 +1,17 @@
+query Author($slug: String, $locale: SiteLocale) {
+  author(filter: { slug: { eq: $slug } }, locale: $locale) {
+    seo: _seoMetaTags {
+      attributes
+      content
+      tag
+    }
+    name
+    picture {
+      responsiveImage {
+        ...DatoImage_responsiveImage
+      }
+    }
+    bio
+    description
+  }
+}

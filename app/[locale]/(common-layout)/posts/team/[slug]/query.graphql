@@ -1,0 +1,27 @@
+query NewTeam($slug: String, $locale: SiteLocale) {
+  newTeam(filter: { slug: { eq: $slug } }, locale: $locale) {
+    seo: _seoMetaTags {
+      attributes
+      content
+      tag
+    }
+    name
+    picture {
+      responsiveImage {
+        ...DatoImage_responsiveImage
+      }
+    }
+    teamPosition
+    description
+    socialMediaLinks {
+      url
+      name
+      id
+      icon {
+        url
+        height
+        width
+      }
+    }
+  }
+}

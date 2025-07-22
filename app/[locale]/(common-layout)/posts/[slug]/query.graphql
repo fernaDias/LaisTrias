@@ -1,0 +1,70 @@
+query Post($slug: String, $locale: SiteLocale, $fallbackLocale: [SiteLocale!]) {
+  post(
+    filter: { slug: { eq: $slug }, title: { isBlank: "false" } }
+    locale: $locale
+    fallbackLocales: $fallbackLocale
+  ) {
+    seo: _seoMetaTags {
+      attributes
+      content
+      tag
+    }
+    _publishedAt
+    title
+    description {
+      value
+    }
+    tags {
+      id
+      tag
+      slug
+    }
+    content {
+      value
+      links {
+        ... on RecordInterface {
+          id
+          __typename
+        }
+        _publishedAt
+        slug
+        title
+
+        tags {
+          tag
+        }
+        seoTags {
+          description
+          image {
+            responsiveImage {
+              ...DatoImage_responsiveImage
+            }
+          }
+        }
+      }
+      blocks {
+        ... on RecordInterface {
+          id
+          __typename
+        }
+        ... on ImageBlockRecord {
+          image {
+            id
+            responsiveImage {
+              ...DatoImage_responsiveImage
+            }
+          }
+        }
+        ... on AppCtaRecord {
+          ...CtaAppBlock
+        }
+        ... on NewsletterSubscriptionRecord {
+          ...NewsletterSubscription
+        }
+        ... on CtaButtonWithImageRecord {
+          ...CtaButtonWithImage
+        }
+      }
+    }
+  }
+}

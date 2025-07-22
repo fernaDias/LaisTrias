@@ -1,0 +1,16 @@
+fragment OcastingSection on OcastingSectionRecord {
+  title
+  subtitle
+  showcasedOcasting {
+    name
+    id
+    slug
+    user
+    description
+    picture {
+      responsiveImage {
+        ...DatoImage_responsiveImage
+      }
+    }
+  }
+}

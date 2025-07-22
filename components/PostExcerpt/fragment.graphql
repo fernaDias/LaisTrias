@@ -1,0 +1,21 @@
+fragment PostExcerpt on PostRecord {
+  _publishedAt
+  slug
+  id
+  title
+  description {
+    value
+  }
+
+  tags {
+    tag
+  }
+  seoTags {
+    description
+    image {
+      responsiveImage {
+        ...DatoImage_responsiveImage
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+fragment FeatureListSection on FeatureListSectionRecord {
+  featuresHeader
+  featuresSubheader
+  displayOption
+  feature {
+    __typename
+    id
+    featureTitle
+    featureDescription
+    icon {
+      url
+    }
+  }
+  ctabutton {
+    id
+    label
+    primary
+    url
+  }
+}

@@ -1,0 +1,39 @@
+query Casting($slug: String, $locale: SiteLocale) {
+  casting(filter: { slug: { eq: $slug } }, locale: $locale) {
+    seo: _seoMetaTags {
+      attributes
+      content
+      tag
+    }
+    name
+    picture {
+      responsiveImage {
+        ...DatoImage_responsiveImage
+      }
+    }
+    bio
+    description {
+      value
+      blocks {
+        ... on RecordInterface {
+          id
+          __typename
+        }
+        ... on ImageBlockRecord {
+          image {
+            id
+            responsiveImage {
+              ...DatoImage_responsiveImage
+            }
+          }
+        }
+        ... on NewsletterSubscriptionRecord {
+          ...NewsletterSubscription
+        }
+        ... on CtaButtonWithImageRecord {
+          ...CtaButtonWithImage
+        }
+      }
+    }
+  }
+}
