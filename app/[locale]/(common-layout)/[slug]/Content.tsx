@@ -32,6 +32,7 @@ import ExpandedOcasting from "@/components/blocksWithVariants/OcastingSectionRec
 import ExpandedNewTeam from "@/components/blocksWithVariants/NewTeamSectionRecord/ExpandedNewTeam";
 import DetailSectionCta from "@/components/blocksWithVariants/DetailSectionCtaRecord /DetailSectionCta";
 import ContactSection from "@/components/blocksWithVariants/ContactSection/ContactSection";
+import InstagramSection from "@/components/blocksWithVariants/InstagramSection/InstagramSection";
 
 const Content: ContentPage<PageProps, Query> = ({
   data,
@@ -88,6 +89,9 @@ const Content: ContentPage<PageProps, Query> = ({
           }
           case "ContactSectionRecord": {
             return <ContactSection fragment={section} />;
+          }
+          case "InstagramSectionRecord": {
+            return <InstagramSection fragment={section} />;
           }
           case "ReviewSectionRecord": {
             switch (section.displayOptions) {

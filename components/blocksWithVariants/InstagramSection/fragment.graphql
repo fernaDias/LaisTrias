@@ -1,0 +1,6 @@
+fragment InstagramSection on InstagramSectionRecord {
+  heading
+  details {
+    value
+  }
+}

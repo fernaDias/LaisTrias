@@ -55,6 +55,9 @@ query Page($locale: SiteLocale, $fallbackLocale: [SiteLocale!], $slug: String) {
       ... on ContactSectionRecord {
         ...ContactSection
       }
+      ... on InstagramSectionRecord {
+        ...InstagramSection
+      }
       ... on ReviewSectionRecord {
         displayOptions
         ...ReviewSection
