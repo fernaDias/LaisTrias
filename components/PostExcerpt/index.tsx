@@ -39,7 +39,7 @@ const PostExcerpt = ({ fragment, globalPageProps }: Props) => {
       h="100%"
       overflow="hidden"
       rounded="xl"
-      bg="#2A2A2A"
+      bg="white"
       boxShadow="0 16px 24px -8px rgba(0, 0, 0, 0.4)"
     >
       <Box
