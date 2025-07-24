@@ -25,7 +25,7 @@ const BigImageVerticalFeatures = ({ fragment }: Props) => {
 
   return (
     <Box id="BigImageVerticalFeatures" py={{ base: 6, sm: 8, lg: 12 }}>
-      <Container maxW="7xl" px={{ base: 4, md: 8 }}>
+      <Container maxW="7xl" px={{ base: 6, md: 8 }}>
         <Box mb={{ base: 10, md: 16 }} textAlign="center">
           <Heading
             as="h2"

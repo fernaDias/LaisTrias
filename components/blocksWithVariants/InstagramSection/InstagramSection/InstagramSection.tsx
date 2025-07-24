@@ -126,7 +126,7 @@ const InstagramSection = ({ fragment }: Props) => {
         maxW="container.xl"
         position="relative"
         zIndex={1}
-        px={{ base: 4, md: 8 }}
+        px={{ base: 6, md: 8 }}
         py={10}
       >
         <Grid

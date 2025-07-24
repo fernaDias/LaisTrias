@@ -23,7 +23,7 @@ const BigImageHorizontalFeatures = ({ fragment }: Props) => {
   } = getFragmentData(FeatureListSectionFragmentDoc, fragment);
   return (
     <Box id="BigImageHorizontalFeatures" cursor="default">
-      <Container maxW="container.xl" px={{ base: 4, md: 8 }}>
+      <Container maxW="container.xl" px={{ base: 6, md: 8 }}>
         <Box mb={{ base: 10, md: 16 }} textAlign="center">
           <Heading
             as="h2"

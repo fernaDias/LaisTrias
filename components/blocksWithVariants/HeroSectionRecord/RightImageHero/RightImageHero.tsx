@@ -63,16 +63,15 @@ const RightImageHero = ({ fragment }: Props) => {
       variants={containerVariants}
       initial="hidden"
       animate={controls}
-      maxH="865px"
+      maxH={{ base: "inherit", lg: "865px" }}
     >
-      <Container maxW="container.xl" px={{ base: 4, md: 8 }} py={8}>
+      <Container maxW="container.xl" px={{ base: 6, md: 8 }} py={8}>
         <Flex
-          direction={{ base: "column", xl: "row" }}
+          direction={{ base: "column-reverse", xl: "row" }} // <- Aqui a mudança
           justify="space-between"
           gap={{ base: 6, sm: 10, md: 10 }}
           overflow="hidden"
         >
-          {/* Conteúdo textual animado */}
           <MotionBox
             variants={containerVariants}
             py={{ lg: 12, xl: 24 }}
@@ -83,7 +82,7 @@ const RightImageHero = ({ fragment }: Props) => {
               <Heading
                 as="h1"
                 fontWeight="medium"
-                fontSize={{ base: "4xl", sm: "5xl", md: "90px" }}
+                fontSize={{ base: "5xl", md: "90px" }}
                 color="#637774"
                 lineHeight={1}
               >
@@ -96,7 +95,7 @@ const RightImageHero = ({ fragment }: Props) => {
                 my={10}
                 color="black"
                 fontWeight="normal"
-                fontSize={{ xl: "24px" }}
+                fontSize={{ base: "16px", md: "24px" }}
                 lineHeight="relaxed"
                 maxW={{ lg: "80%" }}
                 mx={{ base: "auto", lg: "0" }}

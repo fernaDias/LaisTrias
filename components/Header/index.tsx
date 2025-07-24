@@ -118,7 +118,7 @@ const Header = ({ globalPageProps, data }: Props) => {
                   <Box
                     h="2px"
                     w="30px"
-                    bg="white"
+                    bg="colorBrand.200"
                     my="5px"
                     transform={
                       navbarOpen ? "rotate(45deg) translateY(10px)" : "none"
@@ -131,12 +131,12 @@ const Header = ({ globalPageProps, data }: Props) => {
                     my="5px"
                     opacity={navbarOpen ? 0 : 1}
                     transition="0.3s"
-                    bg="white"
+                    bg="colorBrand.200"
                   />
                   <Box
                     h="2px"
                     w="30px"
-                    bg="white"
+                    bg="colorBrand.200"
                     my="5px"
                     transform={
                       navbarOpen ? "rotate(-45deg) translateY(-10px)" : "none"

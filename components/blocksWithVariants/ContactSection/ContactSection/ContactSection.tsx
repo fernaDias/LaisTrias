@@ -32,7 +32,6 @@ import {
 import { motion, useAnimation, type Variants } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
-import { keyframes } from "@emotion/react";
 import ContactForm from "./Contact";
 
 type Props = {
@@ -84,8 +83,6 @@ type FormInputs = {
 };
 
 const ContactSection = ({ fragment }: Props) => {
-  const { register, handleSubmit, reset } = useForm<FormInputs>();
-  const [file, setFile] = useState<File | null>(null);
   const { heading, details } = getFragmentData(
     ContactSectionFragmentDoc,
     fragment
@@ -102,30 +99,6 @@ const ContactSection = ({ fragment }: Props) => {
       controls.start("visible");
     }
   }, [controls, inView]);
-
-  const onSubmit = async (data: FormInputs) => {
-    const formData = new FormData();
-    formData.append("name", data.name);
-    formData.append("email", data.email);
-    formData.append("message", data.message);
-    if (file) formData.append("attachment", file);
-
-    try {
-      const response = await fetch("/api/sendEmail", {
-        method: "POST",
-        body: formData,
-      });
-
-      const result = await response.json();
-      console.log(result);
-      reset();
-      setFile(null);
-      alert("Mensagem enviada com sucesso!");
-    } catch (err) {
-      console.error(err);
-      alert("Erro ao enviar mensagem.");
-    }
-  };
 
   return (
     <Box id="detail-section-cta" position="relative" ref={ref}>
@@ -152,11 +125,11 @@ const ContactSection = ({ fragment }: Props) => {
         maxW="container.xl"
         position="relative"
         zIndex={1}
-        px={{ base: 4, md: 8 }}
+        px={{ base: 6, md: 8 }}
         py={10}
       >
         <Grid
-          gap={{ base: 4, lg: 10 }}
+          gap={{ base: 6, lg: 10 }}
           templateColumns={{ base: "1fr", lg: "repeat(2, 500px)" }}
           w="100%"
           h="100%"
@@ -171,8 +144,8 @@ const ContactSection = ({ fragment }: Props) => {
             <GridItem>
               <Heading
                 as="h1"
-                mb={{ base: 0, md: 12 }}
-                fontSize="5xl"
+                mb={{ base: 6, md: 12 }}
+                fontSize={{ base: "4xl", md: "5xl" }}
                 color="primary.500"
               >
                 {heading}

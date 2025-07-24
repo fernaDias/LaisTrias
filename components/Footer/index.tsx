@@ -64,7 +64,7 @@ const Footer = ({ data, globalPageProps }: Props) => {
             justifyContent={{ base: "space-between", lg: "center" }}
           >
             <SimpleGrid
-              columns={{ base: 1, lg: 5 }}
+              columns={{ base: 5, lg: 5 }}
               spacingY={2}
               justifyContent={{ base: "space-between", lg: "center" }}
             >
@@ -92,7 +92,7 @@ const Footer = ({ data, globalPageProps }: Props) => {
 
           <Box
             gridColumn="1"
-            gridColumnStart={3}
+            gridColumnStart={{ base: 1, lg: 3 }}
             gridColumnEnd={{ base: 5, lg: 5 }}
             fontSize="base"
             fontWeight="bold"

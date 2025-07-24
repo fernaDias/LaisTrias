@@ -114,7 +114,7 @@ const DetailSectionCta = ({ fragment }: Props) => {
       <Container
         maxW="container.xl"
         position="relative"
-        px={{ base: 4, md: 8 }}
+        px={{ base: 6, md: 8 }}
         zIndex={1}
         py={10}
       >
@@ -135,7 +135,7 @@ const DetailSectionCta = ({ fragment }: Props) => {
             <GridItem>
               <Heading
                 as="h1"
-                fontSize={{ base: "4xl", sm: "5xl", md: "5.5rem" }}
+                fontSize={{ base: "5xl", md: "5.5rem" }}
                 color="primary.500"
               >
                 {heading}
@@ -151,7 +151,6 @@ const DetailSectionCta = ({ fragment }: Props) => {
             <GridItem>
               <Stack
                 direction="row"
-                justifyContent="end"
                 textAlign="end"
                 spacing={2.5}
                 w="full"
@@ -186,6 +185,7 @@ const DetailSectionCta = ({ fragment }: Props) => {
                         fontWeight="medium"
                         lineHeight="relaxed"
                         color="black"
+                        textAlign={{ base: "center", lg: "right" }}
                       >
                         {children}
                       </Text>
@@ -220,7 +220,7 @@ const DetailSectionCta = ({ fragment }: Props) => {
               </Stack>
               <Stack
                 direction="row"
-                justifyContent="end"
+                justifyContent={{ base: "center", lg: "flex-end" }}
                 spacing={2.5}
                 w="full"
                 justify={{ base: "center", lg: "flex-start" }}

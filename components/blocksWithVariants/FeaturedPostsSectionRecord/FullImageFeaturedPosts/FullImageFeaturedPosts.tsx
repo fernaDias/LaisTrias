@@ -70,7 +70,7 @@ const FullImageFeaturedPosts = ({ fragment, globalPageProps }: Props) => {
       py={{ base: 16, md: 20, lg: 28 }}
       ref={ref}
     >
-      <Container maxW="container.xl" px={{ base: 4, md: 8 }}>
+      <Container maxW="container.xl" px={{ base: 6, md: 8 }}>
         <Box maxW="7xl">
           <MotionBox
             mb={{ base: 10, md: 16 }}
@@ -83,7 +83,7 @@ const FullImageFeaturedPosts = ({ fragment, globalPageProps }: Props) => {
             <Heading
               as="h1"
               mb={{ base: 4, md: 6 }}
-              fontSize={{ base: "2xl", lg: "6xl" }}
+              fontSize={{ base: "5xl", lg: "6xl" }}
               fontWeight="bold"
               color="primary.500"
             >
@@ -118,7 +118,7 @@ const FullImageFeaturedPosts = ({ fragment, globalPageProps }: Props) => {
                     borderRadius="34px"
                     bg="gray.100"
                     boxShadow="34px"
-                    h={{ base: 48, md: 64, xl: 96 }}
+                    h={{ base: 64, xl: 96 }}
                     role="group"
                     display="flex"
                     flexDirection="column"

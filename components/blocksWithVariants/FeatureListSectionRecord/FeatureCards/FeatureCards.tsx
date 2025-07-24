@@ -65,7 +65,7 @@ const FeatureCards = ({ fragment }: Props) => {
         position="relative"
         zIndex={1}
         py={10}
-        px={{ base: 4, md: 8 }}
+        px={{ base: 6, md: 8 }}
       >
         <MotionBox
           maxW="3xl"
@@ -78,7 +78,7 @@ const FeatureCards = ({ fragment }: Props) => {
         >
           <Heading
             as="h1"
-            fontSize="6xl"
+            fontSize={{ base: "5xl", lg: "6xl" }}
             fontWeight="bold"
             color="colorBrand.200"
             lineHeight="tight"
@@ -99,7 +99,7 @@ const FeatureCards = ({ fragment }: Props) => {
           {features.map((feature, i) => (
             <MotionBox
               key={feature.id}
-              h="18rem"
+              h={{ base: "auto", md: "18rem" }}
               bg="white"
               boxShadow="0 16px 24px -8px #3f4d6355"
               rounded="34px"
@@ -115,7 +115,7 @@ const FeatureCards = ({ fragment }: Props) => {
               custom={i}
             >
               <Box
-                h={{ base: "100px", md: "50px" }}
+                h={{ base: "50px", md: "50px" }}
                 display="flex"
                 alignItems="center"
                 justifyContent="center"

@@ -24,7 +24,7 @@ const MinimalReviewCards = ({ fragment }: Props) => {
 
   return (
     <Box id="MinimalReviewCards" py={{ base: 8, sm: 8, lg: 12 }}>
-      <Box maxW="7xl" mx="auto" px={{ base: 4, md: 8 }}>
+      <Box maxW="7xl" mx="auto" px={{ base: 6, md: 8 }}>
         <Heading
           as="h2"
           fontSize={{ base: "2xl", lg: "3xl" }}
