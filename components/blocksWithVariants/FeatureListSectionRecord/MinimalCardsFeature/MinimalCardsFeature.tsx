@@ -37,13 +37,17 @@ const MinimalCardsFeature = ({ fragment }: Props) => {
       const cardCenter = i * CARD_WIDTH + CARD_WIDTH / 2;
 
       // Centro visível do container
-      const containerCenter = scrollLeft + scrollRef.current.offsetWidth / 2;
+      const containerCenter = scrollRef.current
+        ? scrollLeft + scrollRef.current.offsetWidth / 2
+        : 0;
 
       // Distância entre centro do card e centro do container
       const distance = cardCenter - containerCenter;
 
       // Normalizar distância para intervalo [-1, 1]
-      const maxDistance = scrollRef.current.offsetWidth / 2 + CARD_WIDTH;
+      const maxDistance = scrollRef.current
+        ? scrollRef.current.offsetWidth / 2 + CARD_WIDTH
+        : CARD_WIDTH;
       const normalized = Math.max(Math.min(distance / maxDistance, 1), -1);
 
       // Multiplicar pela distância máxima de translateX (inverte para efeito suave)
