@@ -118,6 +118,7 @@ const DetailSectionCta = ({ fragment }: Props) => {
           w="100%"
           h="100%"
           justifyItems="center"
+          alignItems="center"
           justifyContent="space-between"
         >
           <MotionBox
@@ -128,8 +129,7 @@ const DetailSectionCta = ({ fragment }: Props) => {
             <GridItem>
               <Heading
                 as="h1"
-                mb={{ base: 0, md: 12 }}
-                fontSize={{ base: "4xl", sm: "5xl", md: "5rem" }}
+                fontSize={{ base: "4xl", sm: "5xl", md: "5.5rem" }}
                 color="primary.500"
               >
                 {heading}
@@ -176,7 +176,7 @@ const DetailSectionCta = ({ fragment }: Props) => {
                     renderNodeRule(isParagraph, ({ children, key }) => (
                       <Text
                         key={key}
-                        fontSize={{ base: "20px" }}
+                        fontSize={{ base: "16px" }}
                         fontWeight="medium"
                         lineHeight="relaxed"
                         color="black"

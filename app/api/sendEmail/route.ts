@@ -7,22 +7,21 @@ export async function POST(req: NextRequest) {
   const name = formData.get("name") as string;
   const email = formData.get("email") as string;
   const message = formData.get("message") as string;
-  const file = formData.get("file") as File | null;
+  const files = formData.getAll("files") as File[];
 
   const transporter = nodemailer.createTransport({
-    host: "smtpout.secureserver.net",
+    host: 'mail.laistriasadvocacia.com.br',
     port: 465,
     secure: true,
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASS,
-
     },
   });
 
   const attachments = [];
 
-  if (file) {
+  for (const file of files) {
     const buffer = Buffer.from(await file.arrayBuffer());
     attachments.push({
       filename: file.name,
@@ -32,7 +31,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const info = await transporter.sendMail({
-      from: '"Lais Trias - 🎯" <lct@laistriasadvocacia.com.br.>',
+      from: '"Lais Trias - 🎯" <lct@laistriasadvocacia.com.br>',
       to: "lct@laistriasadvocacia.com.br",
       replyTo: email,
       subject: "📧 CONTATO SITE",

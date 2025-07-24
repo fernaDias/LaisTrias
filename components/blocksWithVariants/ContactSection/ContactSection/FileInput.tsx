@@ -1,51 +1,67 @@
 import { AttachmentIcon } from "@chakra-ui/icons";
-import {
-  Box,
-  Button,
-  Input,
-  Text,
-  VStack,
-  useDisclosure,
-} from "@chakra-ui/react";
-import { useRef, useState } from "react";
+import { Box, Button, Input, Text, VStack } from "@chakra-ui/react";
+import { forwardRef, useImperativeHandle, useRef, useState } from "react";
 
-export default function FileInput() {
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  const [fileName, setFileName] = useState<string | null>(null);
+export type FileInputRef = {
+  clear: () => void;
+};
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      setFileName(file.name);
-    }
-  };
+type FileInputProps = {
+  onFilesSelect: (files: File[]) => void;
+};
 
-  return (
-    <VStack align="start" spacing={2} justify="flex-start" w="full">
-      <Input
-        type="file"
-        accept="image/*,.pdf"
-        onChange={handleFileChange}
-        ref={inputRef}
-        display="none"
-      />
+const FileInput = forwardRef<FileInputRef, FileInputProps>(
+  ({ onFilesSelect }, ref) => {
+    const inputRef = useRef<HTMLInputElement | null>(null);
+    const [fileNames, setFileNames] = useState<string[]>([]);
 
-      <Button
-        onClick={() => inputRef.current?.click()}
-        leftIcon={<AttachmentIcon />}
-        bg="white"
-        color="black"
-      >
-        Anexar
-      </Button>
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const selectedFiles = Array.from(e.target.files ?? []);
+      if (selectedFiles.length > 0) {
+        setFileNames(selectedFiles.map((f) => f.name));
+        onFilesSelect(selectedFiles);
+      }
+    };
 
-      {fileName && (
-        <Box>
-          <Text fontSize="xs" color="white">
-            Arquivo selecionado: <strong>{fileName}</strong>
+    useImperativeHandle(ref, () => ({
+      clear: () => {
+        if (inputRef.current) {
+          inputRef.current.value = "";
+          setFileNames([]);
+        }
+      },
+    }));
+
+    return (
+      <VStack align="start" spacing={2} justify="flex-start" w="full">
+        <Input
+          type="file"
+          accept="image/*,.pdf"
+          multiple
+          onChange={handleFileChange}
+          ref={inputRef}
+          display="none"
+        />
+
+        <Button
+          onClick={() => inputRef.current?.click()}
+          leftIcon={<AttachmentIcon />}
+          bg="white"
+          color="black"
+        >
+          Anexar Arquivos
+        </Button>
+
+        {fileNames.map((name) => (
+          <Text key={name} fontSize="xs" color="white">
+            {name}
           </Text>
-        </Box>
-      )}
-    </VStack>
-  );
-}
+        ))}
+      </VStack>
+    );
+  }
+);
+
+FileInput.displayName = "FileInput";
+
+export default FileInput;

@@ -2,8 +2,8 @@
 
 import { VStack, Input, Textarea, Button, Stack } from "@chakra-ui/react";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
-import FileInput from "./FileInput";
+import { useRef, useState } from "react";
+import FileInput, { type FileInputRef } from "./FileInput";
 
 type FormValues = {
   name: string;
@@ -13,15 +13,16 @@ type FormValues = {
 
 export default function ContactForm() {
   const { register, handleSubmit, reset } = useForm<FormValues>();
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
+  const fileInputRef = useRef<FileInputRef>(null);
 
   const onSubmit = async (data: FormValues) => {
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
     formData.append("message", data.message);
-    if (file) {
-      formData.append("file", file);
+    for (const file of files) {
+      formData.append("files", file);
     }
 
     try {
@@ -35,7 +36,8 @@ export default function ContactForm() {
       if (result.success) {
         alert("Email enviado com sucesso");
         reset();
-        setFile(null);
+        setFiles([]);
+        fileInputRef.current?.clear();
       } else {
         alert(`Erro ao enviar: ${result.error}`);
       }
@@ -54,15 +56,27 @@ export default function ContactForm() {
       bg="primary.500"
       borderRadius="34px"
     >
-      <Input placeholder="Nome" bg="white" {...register("name")} />
+      <Input
+        placeholder="Nome"
+        bg="white"
+        {...register("name", { required: true })}
+      />
       <Input
         placeholder="Email"
         bg="white"
         type="email"
-        {...register("email")}
+        {...register("email", { required: true })}
       />
-      <Textarea placeholder="Mensagem" bg="white" {...register("message")} />
-      <FileInput />
+      <Textarea
+        placeholder="Mensagem"
+        bg="white"
+        {...register("message", { required: true })}
+      />
+      <FileInput
+        ref={fileInputRef}
+        onFilesSelect={(files) => setFiles(files)}
+      />
+
       <Stack direction="row" spacing={4} w="full" justifyContent="flex-end">
         <Button
           type="submit"
