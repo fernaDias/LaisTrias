@@ -148,7 +148,13 @@ const ContactSection = ({ fragment }: Props) => {
         />
       </MotionBox>
 
-      <Container maxW="container.xl" position="relative" zIndex={1} py={10}>
+      <Container
+        maxW="container.xl"
+        position="relative"
+        zIndex={1}
+        px={{ base: 4, md: 8 }}
+        py={10}
+      >
         <Grid
           gap={{ base: 4, lg: 10 }}
           templateColumns={{ base: "1fr", lg: "repeat(2, 500px)" }}

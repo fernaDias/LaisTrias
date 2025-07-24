@@ -65,7 +65,7 @@ const FeatureCards = ({ fragment }: Props) => {
         position="relative"
         zIndex={1}
         py={10}
-        // px={8}
+        px={{ base: 4, md: 8 }}
       >
         <MotionBox
           maxW="3xl"

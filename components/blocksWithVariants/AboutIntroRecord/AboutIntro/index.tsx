@@ -12,17 +12,10 @@ import { MarkdownRenderer } from "@/components/MarkdownRenderer";
 import DatoImage from "../../../DatoImage";
 import MakeHeading from "@/components/MakeHeading";
 
-import {
-  Box,
-  Container,
-  Text,
-  SimpleGrid,
-  Flex,
-  Button,
-} from "@chakra-ui/react";
+import { Box, Container, Text, SimpleGrid, Button } from "@chakra-ui/react";
 
-import { motion, useAnimation } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { motion, useAnimation, type Variants } from "framer-motion";
+import { useEffect, useState } from "react";
 import { useInView } from "react-intersection-observer";
 
 type Props = {
@@ -31,7 +24,7 @@ type Props = {
 
 const MotionBox = motion(Box);
 
-const containerVariants = {
+const containerVariants: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -40,9 +33,16 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: "easeOut",
+    },
+  },
 };
 
 const AboutIntro = ({ fragment }: Props) => {
@@ -51,7 +51,6 @@ const AboutIntro = ({ fragment }: Props) => {
     subheader,
     images,
     introductionText: introduction,
-    preHeader,
   } = getFragmentData(AboutIntroFragmentDoc, fragment);
 
   const words = header.split(/\s+/);
@@ -66,10 +65,7 @@ const AboutIntro = ({ fragment }: Props) => {
 
   useEffect(() => {
     if (inView) {
-      const timer = setTimeout(() => {
-        controls.start("visible");
-      }, 500);
-      return () => clearTimeout(timer);
+      controls.start("visible");
     }
   }, [controls, inView]);
 
@@ -88,14 +84,11 @@ const AboutIntro = ({ fragment }: Props) => {
           initial="hidden"
           animate={controls}
         >
-          <SimpleGrid
-            columns={{ base: 1, lg: 2 }}
-            gap={8}
-            alignItems="center"
-            mb={12}
-          >
+          {/* Título e imagem estática */}
+          <SimpleGrid columns={{ base: 1, lg: 2 }} gap={8} mb={12}>
             <MotionBox
               variants={itemVariants}
+              custom={0}
               display="flex"
               flexDir="column"
               justifyContent="center"
@@ -109,80 +102,57 @@ const AboutIntro = ({ fragment }: Props) => {
                 mb={4}
                 fontSize="5xl"
               >
-                <Box
-                  as="span"
-                  position="relative"
-                  display="inline-block"
-                  color="primary.500"
-                >
-                  <Box position="relative" color="primary.500">
-                    {firstTwoWords}
-                  </Box>
+                <Box as="span" color="primary.500">
+                  {firstTwoWords}
                 </Box>{" "}
                 {restOfTheString}
               </MakeHeading>
+
               <Text color="black" fontSize="lg" mb={4}>
                 {subheader}
               </Text>
+
               <Button
                 as="a"
-                href={"https://wa.me/5548988786918"}
+                href="https://wa.me/5548988786918"
                 colorScheme="colorBrand.100"
                 bg="primary.500"
                 color="black"
-                _hover={{
-                  bg: "indigo.600",
-                }}
-                _active={{
-                  bg: "gray.300",
-                  color: "gray.700",
-                }}
-                _focusVisible={{
-                  ring: 2,
-                  ringColor: "indigo.300",
-                }}
+                _hover={{ bg: "indigo.600" }}
+                _active={{ bg: "gray.300", color: "gray.700" }}
+                _focusVisible={{ ring: 2, ringColor: "indigo.300" }}
                 px={8}
                 py={3}
                 fontSize={{ base: "sm", md: "base" }}
                 fontWeight="semibold"
                 borderRadius="lg"
-                textAlign="center"
               >
                 Fale conosco
               </Button>
             </MotionBox>
 
-            <Box
-              position="relative"
-              height={{ base: "300px", lg: "500px" }}
-              width="100%"
-              borderRadius="24px"
-              overflow="hidden"
-              boxShadow="0 16px 24px -8px rgba(0, 0, 0, 0.4)"
-            >
-              <DatoImage
-                fragment={images[0].responsiveImage}
-                layout="fill"
-                objectFit="cover"
-                objectPosition="50% 20%"
-              />
-            </Box>
+            <MotionBox variants={itemVariants} custom={1}>
+              <Box
+                position="relative"
+                height={{ base: "300px", lg: "500px" }}
+                width="100%"
+                borderRadius="24px"
+                overflow="hidden"
+                boxShadow="0 16px 24px -8px rgba(0, 0, 0, 0.4)"
+              >
+                <DatoImage
+                  fragment={images[0].responsiveImage}
+                  layout="fill"
+                  objectFit="cover"
+                  objectPosition="50% 20%"
+                />
+              </Box>
+            </MotionBox>
           </SimpleGrid>
 
-          <SimpleGrid
-            columns={{ base: 1, lg: 2 }}
-            gap={8}
-            alignItems="center"
-            mb={12}
-          >
-            {/* Imagem principal em destaque */}
-            <Box
-              position="relative"
-              width="100%"
-              borderRadius="24px"
-              overflow="hidden"
-            >
-              {/* Carrossel automático */}
+          {/* Carrossel e texto à direita */}
+          <SimpleGrid columns={{ base: 1, lg: 2 }} gap={8}>
+            <MotionBox variants={itemVariants} custom={2}>
               {carouselImages.length > 0 && (
                 <Box
                   mt={10}
@@ -215,11 +185,11 @@ const AboutIntro = ({ fragment }: Props) => {
                   ))}
                 </Box>
               )}
-            </Box>
+            </MotionBox>
 
-            {/* Texto à direita */}
             <MotionBox
               variants={itemVariants}
+              custom={3}
               display="flex"
               flexDir="column"
               justifyContent="center"
